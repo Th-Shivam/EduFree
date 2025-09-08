@@ -1,32 +1,20 @@
-// Custom cursor with smooth movement
+// Custom cursor disabled: keep minimal no-op bindings for safety
 const cursor = document.querySelector('.custom-cursor');
 let mouseX = 0, mouseY = 0;
 let cursorX = 0, cursorY = 0;
+let isMoving = false;
 
 document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    // no-op when custom cursor is hidden
 });
 
-function animateCursor() {
-    cursorX += (mouseX - cursorX) * 0.1;
-    cursorY += (mouseY - cursorY) * 0.1;
-    
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    
-    requestAnimationFrame(animateCursor);
-}
-animateCursor();
+function animateCursor() { /* disabled */ }
 
 // Enhanced cursor hover effects
-document.addEventListener('mouseover', (e) => {
-    if (e.target.closest('.btn, .card, .skill-card, .team-member, .nav-links a, .booklet-card')) {
-        cursor.classList.add('hover');
-    } else {
-        cursor.classList.remove('hover');
-    }
-});
+document.addEventListener('mouseover', (e) => { /* disabled */ });
+
+// Disable custom cursor on touch devices
+window.addEventListener('touchstart', () => { /* disabled */ }, { once: true });
 
 // Navigation with smooth transitions
 function showSection(sectionName) {
@@ -260,21 +248,21 @@ window.onclick = function(event) {
     }
 }
 
-// Enhanced particle system
+// Enhanced particle system (lighter)
 function createParticle() {
     const particle = document.createElement('div');
     particle.classList.add('particle');
     
-    const size = Math.random() * 8 + 4;
+    const size = Math.random() * 6 + 3;
     const startX = Math.random() * window.innerWidth;
-    const duration = Math.random() * 4 + 6;
+    const duration = Math.random() * 3 + 7;
     
     particle.style.left = startX + 'px';
     particle.style.bottom = '-10px';
     particle.style.width = size + 'px';
     particle.style.height = size + 'px';
     particle.style.animationDuration = duration + 's';
-    particle.style.opacity = Math.random() * 0.5 + 0.3;
+    particle.style.opacity = Math.random() * 0.4 + 0.2;
     
     document.body.appendChild(particle);
     
@@ -285,8 +273,14 @@ function createParticle() {
     }, duration * 1000);
 }
 
-// Generate particles more frequently
-setInterval(createParticle, 1500);
+// Generate particles (throttled)
+let particleTimer = setInterval(createParticle, 2200);
+
+// Respect reduced motion
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (prefersReduced.matches) {
+    clearInterval(particleTimer);
+}
 
 // Mobile menu functionality
 function toggleMobileMenu() {
@@ -319,4 +313,15 @@ document.addEventListener('click', (e) => {
 // Prevent mobile menu close when clicking inside nav
 document.querySelector('nav').addEventListener('click', (e) => {
     e.stopPropagation();
+});
+
+// Ensure mobile menu is closed on load and on resize > 768px
+window.addEventListener('load', () => {
+    closeMobileMenu();
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        closeMobileMenu();
+    }
 });

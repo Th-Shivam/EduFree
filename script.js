@@ -208,6 +208,41 @@ const skillContent = {
                 topics: ["Identity management", "Data protection", "Compliance", "Security monitoring"]
             }
         ]
+    },
+    devops: {
+        title: "DevOps",
+        concepts: [
+            { name: "CI/CD", description: "Automate build, test, deploy pipelines", topics: ["GitHub Actions", "Jenkins", "GitLab CI", "ArgoCD"] },
+            { name: "Containers", description: "Package and ship apps consistently", topics: ["Docker", "Images", "Volumes", "Registries"] },
+            { name: "Orchestration", description: "Run containers at scale", topics: ["Kubernetes", "Deployments", "Services", "Ingress"] },
+            { name: "IaC", description: "Manage infra with code", topics: ["Terraform", "CloudFormation", "Pulumi"] }
+        ]
+    },
+    dsml: {
+        title: "Data Science & ML",
+        concepts: [
+            { name: "Foundations", description: "Math and stats for ML", topics: ["Probability", "Linear algebra", "Optimization"] },
+            { name: "Supervised", description: "Classical ML algorithms", topics: ["Regression", "Trees", "SVM", "Ensembles"] },
+            { name: "Unsupervised", description: "Find structure in data", topics: ["Clustering", "Dimensionality reduction"] },
+            { name: "Pipelines", description: "Data prep and evaluation", topics: ["EDA", "Feature engineering", "Validation"] }
+        ]
+    },
+    mobile: {
+        title: "Mobile Development",
+        concepts: [
+            { name: "Cross‑platform", description: "Build once, run anywhere", topics: ["Flutter", "React Native", "State mgmt"] },
+            { name: "Android", description: "Native Android essentials", topics: ["Kotlin", "Jetpack", "Navigation", "Lifecycle"] },
+            { name: "iOS", description: "Native iOS essentials", topics: ["Swift", "SwiftUI", "Combine"] }
+        ]
+    },
+    sysdesign: {
+        title: "System Design",
+        concepts: [
+            { name: "Foundations", description: "Core principles and tradeoffs", topics: ["CAP", "Scalability", "Reliability", "Latency"] },
+            { name: "Storage", description: "Data systems", topics: ["SQL vs NoSQL", "Caching", "Sharding", "Indexing"] },
+            { name: "Messaging", description: "Async communication", topics: ["Queues", "Streams", "Pub/Sub"] },
+            { name: "Observability", description: "Know what's happening", topics: ["Logs", "Metrics", "Tracing"] }
+        ]
     }
 };
 

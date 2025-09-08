@@ -519,6 +519,47 @@ nav:hover {
     font-weight: 600;
 }
 
+.booklet-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.status-badge {
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.status-badge[data-status="soon"] { color: #ffd166; border-color: rgba(255, 209, 102, 0.35); }
+.status-badge[data-status="progress"] { color: #9aa6ff; border-color: rgba(154, 166, 255, 0.35); }
+.status-badge[data-status="plan"] { color: #a8dadc; border-color: rgba(168, 218, 220, 0.35); }
+
+.tag-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0.5rem 0 1.25rem;
+}
+
+.tag {
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    border: 1px dashed var(--border);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.booklet-actions { display: flex; gap: 0.75rem; }
+.btn.secondary { background: transparent; border: 1px solid var(--border); box-shadow: none; }
+.btn.secondary:hover { border-color: rgba(154, 166, 255, 0.5); }
+
 /* Footer */
 .site-footer {
     margin-top: 4rem;
